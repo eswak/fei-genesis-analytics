@@ -1,6 +1,6 @@
 const fs = require('fs');
 const plt = require('matplotnode');
-const data = require(__dirname + '/../output/genesis-participants.json');
+const data = require(__dirname + '/../output/current-balances.json');
 var stats = { test: true };
 
 var genesisEth = 639235.59;
@@ -13,8 +13,6 @@ for (var key in data) {
   var d = data[key];
   d.genesisFeiBalance = (d.ethGenesis - d.ethPreswap) * genesisFeiPerEth;
   d.genesisTribeBalance = (d.ethGenesis) * genesisAirdropTribePerEth + d.ethPreswap * genesisPreswapTribePerEth;
-  d.fei = Math.random() * 2 * d.genesisFeiBalance;
-  d.tribe = Math.random() * 2 * d.genesisTribeBalance;
 }
 
 (async () => {
